@@ -1,0 +1,49 @@
+﻿@{
+    ViewData["Title"] = "Выберите действие";
+}
+
+
+<div class="row col-12">
+    @if (User.IsInRole("reseptionist") || (User.IsInRole("technologist")) || (User.IsInRole("admin")))
+    {
+        <div class="col-4 blur-background p-3">
+            <h6> Управление заказами </h6>
+            <hr />
+            <div class="form-group">
+                <a asp-controller="Order" asp-action="Index">Наряд-заказы</a>
+            </div>
+            <div class="form-group">
+                <a asp-controller="Order" asp-action="Create">Создать новый наряд-заказ</a>
+            </div>
+        </div>
+        <div class="col-4 blur-background p-3 pl-5">
+            <h6> Управление клиентами </h6>
+            <hr />
+            <div class="form-group">
+                <a asp-controller="Client" asp-action="Index">Клиентская база</a>
+            </div>
+            <div class="form-group">
+                <a asp-controller="Client" asp-action="Create">Добавить клиента</a>
+            </div>
+        </div>
+
+        @if (User.IsInRole("admin"))
+        {
+            <div class="col-4 blur-background p-3 pl-5">
+                <h6> Управление сотрудниками </h6>
+                <hr />
+                <div class="form-group">
+                    <a class="text-dark" asp-controller="Account" asp-action="Index">Аккаунты сотрудников</a>
+                </div>
+                <div class="form-group">
+                    <a class="text-dark" asp-controller="Account" asp-action="Register">Добавить аккаунт сотрудника</a>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        ViewData["Title"] = "";
+        <h6>Для данного аккаунта не указаны права доступа. Обратитесь к администратору.</h6><br />
+    }
+</div>

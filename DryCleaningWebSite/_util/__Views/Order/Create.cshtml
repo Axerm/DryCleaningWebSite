@@ -1,0 +1,187 @@
+﻿@model OrderComplexDataViewModel
+@{ 
+    ViewData["Title"] = "Создание наряд-заказа";
+}
+
+<form method="post" asp-controller="Order" asp-action="Create" asp-antiforgery="true" autocomplete="off">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="form-group">
+        <label asp-for="@Model.OrderViewModelData.DateOfReceipt" class="control-label"></label>
+        <input asp-for="@Model.OrderViewModelData.DateOfReceipt" type="date" autocomplete="off" class="form-control" />
+        <span asp-validation-for="@Model.OrderViewModelData.DateOfReceipt" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="@Model.OrderViewModelData.DateOfPlainIssue" class="control-label"></label>
+        <input asp-for="@Model.OrderViewModelData.DateOfPlainIssue" type="date" autocomplete="off" class="form-control" />
+        <span asp-validation-for="@Model.OrderViewModelData.DateOfPlainIssue" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="OrderViewModelData.ClientId"></label><br />
+        <select asp-for="OrderViewModelData.ClientId" asp-items="@Model.ClientsData" autocomplete="off" class="form-control">
+            <option>Выберите...</option>
+        </select>
+        <span asp-validation-for="OrderViewModelData.ClientId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="OrderViewModelData.ThingTypeId"></label><br />
+        <select asp-for="OrderViewModelData.ThingTypeId" asp-items="@Model.ThingTypesData" autocomplete="off" class="form-control">
+            <option>Выберите...</option>
+        </select>
+        <span asp-validation-for="OrderViewModelData.ManufacturerMarkingId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="OrderViewModelData.ThingSize"></label><br />
+        <input asp-for="OrderViewModelData.ThingSize" autocomplete="off" class="form-control">
+        <span asp-validation-for="OrderViewModelData.ThingSize" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="OrderViewModelData.ThingComplect"></label><br />
+        <input asp-for="OrderViewModelData.ThingComplect" autocomplete="off" class="form-control">
+        <span asp-validation-for="OrderViewModelData.ThingComplect" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="OrderViewModelData.ManufacturerMarkingId"></label><br />
+        <select asp-for="OrderViewModelData.ManufacturerMarkingId" asp-items="@Model.ManufacturerMarkingsData" autocomplete="off" >
+            <option>Выберите...</option>
+        </select>
+        <span asp-validation-for="OrderViewModelData.ManufacturerMarkingId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="OrderViewModelData.PollutionDegreeId"></label><br />
+        <select asp-for="OrderViewModelData.PollutionDegreeId" asp-items="@Model.PollutionDegreeData" autocomplete="off" >
+            <option>Выберите...</option>
+        </select>
+        <span asp-validation-for="OrderViewModelData.PollutionDegreeId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="OrderViewModelData.BurnoutDegreeId"></label><br />
+        <select asp-for="OrderViewModelData.BurnoutDegreeId" asp-items="@Model.BurnoutDegreeData" autocomplete="off">
+            <option>Выберите...</option>
+        </select>
+        <span asp-validation-for="OrderViewModelData.BurnoutDegreeId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="OrderViewModelData.GluePartsId"></label><br />
+        <select asp-for="OrderViewModelData.GluePartsId" asp-items="@Model.GluePartssData" autocomplete="off">
+            <option>Выберите...</option>
+        </select>
+        <span asp-validation-for="OrderViewModelData.GluePartsId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="OrderViewModelData.HasBloodWine">
+            <input asp-for="OrderViewModelData.HasBloodWine" />
+            @Html.DisplayNameFor(m => m.OrderViewModelData.HasBloodWine)
+        </label>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="OrderViewModelData.HasPaintBlackPasta">
+            <input asp-for="OrderViewModelData.HasPaintBlackPasta" />
+            @Html.DisplayNameFor(m => m.OrderViewModelData.HasPaintBlackPasta)
+        </label>
+    </div>
+    <div class="form-group">
+        <label asp-for="OrderViewModelData.HasOilFat">
+            <input asp-for="OrderViewModelData.HasOilFat" />
+            @Html.DisplayNameFor(m => m.OrderViewModelData.HasOilFat)
+        </label>
+    </div>
+    <div class="form-group">
+        <label asp-for="OrderViewModelData.HasShine">
+            <input asp-for="OrderViewModelData.HasShine" />
+            @Html.DisplayNameFor(m => m.OrderViewModelData.HasShine)
+        </label>
+    </div>
+    <div class="form-group">
+        <label asp-for="OrderViewModelData.HasSpotUnknownOrigin">
+            <input asp-for="OrderViewModelData.HasSpotUnknownOrigin" />
+            @Html.DisplayNameFor(m => m.OrderViewModelData.HasSpotUnknownOrigin)
+        </label>
+    </div>
+    <div class="form-group">
+        <label asp-for="OrderViewModelData.HasAbrasion">
+            <input asp-for="OrderViewModelData.HasAbrasion" />
+            @Html.DisplayNameFor(m => m.OrderViewModelData.HasAbrasion)
+        </label>
+    </div>
+    <div class="form-group">
+        <label asp-for="OrderViewModelData.HasDeformation">
+            <input asp-for="OrderViewModelData.HasDeformation" />
+            @Html.DisplayNameFor(m => m.OrderViewModelData.HasDeformation)
+        </label>
+    </div>
+    <div class="form-group">
+        <label asp-for="OrderViewModelData.DefectsBefore"></label><br />
+        <input asp-for="OrderViewModelData.DefectsBefore" autocomplete="off" class="form-control">
+        <span asp-validation-for="OrderViewModelData.DefectsBefore" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="OrderViewModelData.DefectsAfter"></label><br />
+        <input asp-for="OrderViewModelData.DefectsAfter" autocomplete="off" class="form-control">
+        <span asp-validation-for="OrderViewModelData.DefectsAfter" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="OrderViewModelData.RemovableFittings"></label><br />
+        <input asp-for="OrderViewModelData.RemovableFittings" autocomplete="off" class="form-control">
+        <span asp-validation-for="OrderViewModelData.RemovableFittings" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="OrderViewModelData.NonRemovableFittings"></label><br />
+        <input asp-for="OrderViewModelData.NonRemovableFittings" autocomplete="off" class="form-control">
+        <span asp-validation-for="OrderViewModelData.NonRemovableFittings" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="OrderViewModelData.OperationalWearDegreeId"></label><br />
+        <select asp-for="OrderViewModelData.OperationalWearDegreeId" asp-items="@Model.OperationalWearDegreesData" autocomplete="off">
+            <option>Выберите...</option>
+        </select>
+        <span asp-validation-for="OrderViewModelData.OperationalWearDegreeId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="OrderViewModelData.ServiceTypeId"></label><br />
+        <select asp-for="OrderViewModelData.ServiceTypeId" asp-items="@Model.ServiceTypesData" autocomplete="off">
+            <option>Выберите...</option>
+        </select>
+        <span asp-validation-for="OrderViewModelData.ServiceTypeId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="OrderViewModelData.StockId"></label><br />
+        <select asp-for="OrderViewModelData.StockId" asp-items="@Model.StocksData" autocomplete="off">
+            <option>Выберите...</option>
+        </select>
+        <span asp-validation-for="OrderViewModelData.StockId" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="OrderViewModelData.AdditionalCost"></label><br />
+        <input asp-for="OrderViewModelData.AdditionalCost" class="form-control" autocomplete="off">
+        <span asp-validation-for="OrderViewModelData.AdditionalCost" class="text-danger"></span>
+    </div>
+
+    <div>
+        <input type="submit" value="Зарегистрировать" class="btn btn-primary" />
+        <a asp-action="Index" class="btn btn-secondary">Отменить регистрацию и вернуться</a>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

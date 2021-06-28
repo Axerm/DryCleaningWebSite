@@ -1,0 +1,202 @@
+﻿/*h1, h2, h3, h4, h5, h6 {
+    color: #2188ff;
+}
+
+label, a {
+    color: #c8e1ff;
+}
+
+    a:hover {
+        color: #afd4ff
+    }
+
+table label {
+    color: white;
+}
+
+table a {
+    color: #c8e1ff;
+}*/
+
+/** {
+    box-sizing: border-box
+} */
+
+a {
+    color: #343a40
+}
+
+a:hover, a:focus {
+    color: #121416
+}
+
+input[type=submit],
+.like-submit {
+    width: 100%;
+    color: white;
+}
+
+input[type=text],
+input[type=email],
+input[type=number],
+input[type=password],
+input[type=datetime],
+input[type=date]
+select {
+    width: 100%;
+}
+
+/*.like-submit a {
+    color: white;
+}*/
+
+body,
+.blur-background::before {
+    background: rgba(0, 0, 0, 0.90);
+    background: url(../img/dry2.jpg) /*no-repeat*/ center center fixed;
+    /*background-size: cover;*/
+    background-size: 400px 400px;
+}
+
+.blur-background-with-shadow::before {
+    /*background: rgba(0, 0, 0, 0.25);*/
+    /*border: 5px solid #fff;
+    border-radius: 10px;*/
+    filter: blur(2px);
+    content: '';
+    /*margin: -35px;*/
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    box-shadow: 0 0.3px 0.7px rgba(0, 0, 0, 0.126), 0 0.9px 1.7px rgba(0, 0, 0, 0.179), 0 1.8px 3.5px rgba(0, 0, 0, 0.224), 0 3.7px 7.3px rgba(0, 0, 0, 0.277), 0 10px 20px rgba(0, 0, 0, 0.4);
+    transition: 0.5s ease;
+}
+
+.blur-background-with-shadow:hover {
+    box-shadow: 0 0.7px 1px rgba(0, 0, 0, 0.157), 0 1.7px 2.6px rgba(0, 0, 0, 0.224), 0 3.5px 5.3px rgba(0, 0, 0, 0.28), 0 7.3px 11px rgba(0, 0, 0, 0.346), 0 20px 30px rgba(0, 0, 0, 0.5);
+    transition: 0.5s ease;
+}
+
+.blur-background:before {
+    /*background: rgba(0, 0, 0, 0.25);*/
+    /*border: 5px solid #fff;
+    border-radius: 10px;*/
+    filter: blur(7px);
+    /*background-color: #fff;*/
+    content: '';
+    /*margin: -35px;*/
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+    box-shadow: 0 0.3px 0.7px rgba(0, 0, 0, 0.126), 0 0.9px 1.7px rgba(0, 0, 0, 0.179), 0 1.8px 3.5px rgba(0, 0, 0, 0.224), 0 3.7px 7.3px rgba(0, 0, 0, 0.277), 0 10px 20px rgba(0, 0, 0, 0.4);
+    transition: 0.5s ease;
+}
+
+
+
+/*div, body {
+    background: rgba(0, 0, 0, 0.5);
+}
+*/
+/*input[type=text],
+input[type=date],
+input[type=datetime],
+input[type=datetime-local],
+input[type=tel],
+input[type=password],
+input[type=email],
+input[type=number],
+input[type=month],
+input[type=text]:hover,
+input[type=date]:hover,
+input[type=datetime]:hover,
+input[type=datetime-local]:hover,
+input[type=tel]:hover,
+input[type=password]:hover,
+input[type=email]:hover,
+input[type=number]:hover,
+input[type=month]:hover,
+input[type=file]:hover
+
+input[type=text]:focus,
+input[type=date]:focus,
+input[type=datetime]:focus,
+input[type=datetime-local]:focus,
+input[type=tel]:focus,
+input[type=password]:focus,
+input[type=email]:focus,
+input[type=number]:focus,
+input[type=month]:focus,
+input[type=file]:focus
+{
+    border: 1px solid rgba(0,0,0,.5);
+    background: rgba(0,0,0,.25);
+    color: #c8e1ff;
+}
+
+.form-control:disabled,
+.form-control[readonly],
+.form-control:disabled:hover,
+.form-control[readonly]:hover,
+.form-control[readonly]:active {
+    background-color: #2f353a;
+    color: gray;
+}*/
+
+
+/*input:-webkit-autofill- {
+    -webkit-box-shadow: 0 0 0px 1000px yellow inset;
+}*/
+
+/*input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+    border: 1px solid green;
+    -webkit-text-fill-color: green;
+    -webkit-box-shadow: 0 0 0px 1000px #000 inset;
+    transition: background-color 5000s ease-in-out 0s;
+}*/
+
+/*input[type="text"]:focus {
+    background: rgba(0,0,0,.25);
+}*/
+
+
+/*.team--blurred-img {
+  .team__caption {
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('../../assets/img/img-01.jpg');
+      background-repeat: no-repeat;
+      background-position: center bottom;
+      background-size: 100% auto;
+      filter: blur(8px);
+      transform: scale(1.1);
+    }
+  }
+
+  .team__name {
+    background: alpha(var(--color-black), 0.6);
+    padding: var(--space-sm);
+    z-index: 1;
+  }
+}*/
