@@ -1,0 +1,63 @@
+﻿@model ClientViewModel
+@{ 
+    ViewData["Title"] = "Просмотр/редактирование данных о клиенте";
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <section>
+            <form method="post" asp-controller="Client" asp-action="Edit" asp-route-id="@Model.ClientData.Id">
+                <input type="hidden" asp-for="ClientData.Id" />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="ClientData.Name"></label>
+                    <input asp-for="ClientData.Name" class="form-control" autocomplete="off" />
+                    <span asp-validation-for="ClientData.Name" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ClientData.FamilyName"></label>
+                    <input asp-for="ClientData.FamilyName" class="form-control" autocomplete="off" />
+                    <span asp-validation-for="ClientData.FamilyName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ClientData.FatherName"></label>
+                    <input asp-for="ClientData.FatherName" class="form-control" autocomplete="off" />
+                    <span asp-validation-for="ClientData.FatherName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ClientData.Address"></label>
+                    <input asp-for="ClientData.Address" class="form-control" autocomplete="off" />
+                    <span asp-validation-for="ClientData.Address" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ClientData.TelephoneNumber"></label>
+                    <input asp-for="ClientData.TelephoneNumber" class="form-control" autocomplete="off" />
+                    <span asp-validation-for="ClientData.TelephoneNumber" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ClientData.IsNotifyPromotions"></label>
+                    <input type="checkbox" asp-for="ClientData.IsNotifyPromotions" autocomplete="off" />
+                </div>
+                <div class="form-group">
+                    <label asp-for="ClientData.DiscountId"></label><br />
+                    <select asp-for="ClientData.DiscountId" asp-items="@Model.DiscountList" autocomplete="off" class="form-control">
+                        <option>Выберите...</option>
+                    </select>
+                    <span asp-validation-for="ClientData.DiscountId" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ClientData.IsDeprecated"></label>
+                    <input type="checkbox" asp-for="ClientData.IsDeprecated" autocomplete="off" />
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Сохранить изменения</button>
+                    <a asp-action="Index" class="btn btn-secondary">Отменить изменения и вернуться</a>
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

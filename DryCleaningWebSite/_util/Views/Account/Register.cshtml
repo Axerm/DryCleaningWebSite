@@ -1,0 +1,53 @@
+﻿@model UserRegisterViewModel
+@{
+    ViewData["Title"] = "Регистрация";
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <form method="post" asp-controller="Account" asp-action="Register">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div>
+                <label asp-for="Login"></label><br />
+                <input asp-for="Login" class="form-control" autocomplete="off"/>
+                <span asp-validation-for="Login" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="Password"></label><br />
+                <input asp-for="Password" class="form-control" autocomplete="off" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="Name"></label><br />
+                <input asp-for="Name" class="form-control" autocomplete="off" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="FamilyName"></label><br />
+                <input asp-for="FamilyName" class="form-control" autocomplete="off" />
+                <span asp-validation-for="FamilyName" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="FatherName"></label><br />
+                <input asp-for="FatherName" class="form-control" autocomplete="off" />
+                <span asp-validation-for="FatherName" class="text-danger"></span>
+            </div>
+            <div>
+                <label asp-for="TelephoneNumber"></label><br />
+                <input asp-for="TelephoneNumber" type="tel" class="form-control" autocomplete="off" />
+                <span asp-validation-for="TelephoneNumber" class="text-danger"></span>
+            </div>
+
+            <div>
+                <br>
+                <input type="submit" class="btn btn-primary" value="Зарегистрировать" />
+                <a asp-action="Index" class="btn btn-secondary">Отменить регистрацию и вернуться</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+

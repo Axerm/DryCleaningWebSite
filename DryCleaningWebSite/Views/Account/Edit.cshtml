@@ -1,0 +1,90 @@
+﻿@model UserEditViewModel
+@{
+    ViewData["Title"] = $"Редактирование аккаунта \"{Model.UserName}\"";
+}
+
+<div class="row">
+    <div class="col-xl-4 col-lg-5 col-md-6 col-sm-7 blur-background p-4">
+        <form asp-action="Edit" asp-controller="Account">
+            <div class="form-group">
+                <input type="hidden" asp-for="Id" />
+                <input type="hidden" asp-for="UserName" />
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="NewPassword"></label>
+                <input asp-for="NewPassword" type="password" class="form-control" autocomplete="off" />
+                <span asp-validation-for="NewPassword" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                *<label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" autocomplete="off" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                *<label asp-for="FamilyName"></label>
+                <input asp-for="FamilyName" class="form-control" autocomplete="off" />
+                <span asp-validation-for="FamilyName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                *<label asp-for="FatherName"></label>
+                <input asp-for="FatherName" class="form-control" autocomplete="off" />
+                <span asp-validation-for="FatherName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                *<label asp-for="TelephoneNumber"></label>
+                <input asp-for="TelephoneNumber" class="form-control" autocomplete="off" />
+                <span asp-validation-for="TelephoneNumber" class="text-danger"></span>
+            </div>
+
+            @if (User.IsInRole("admin"))
+            {
+                <div class="form-group">
+                    *<label asp-for="FilialId"></label><br />
+                    <select asp-for="FilialId" asp-items="@Model.FilialsList" class="form-control" autocomplete="off">
+                        <option>Выберите...</option>
+                    </select>
+                    <span asp-validation-for="FilialId" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    *<label asp-for="RoleName"></label><br />
+                    <select asp-for="RoleName" asp-items="@Model.RoleNamesList" class="form-control" autocomplete="off">
+                        <option>Выберите...</option>
+                    </select>
+                    <span asp-validation-for="RoleName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="IsDeprecated">
+                        <input asp-for="IsDeprecated" autocomplete="off" />
+                        @Html.DisplayNameFor(m => m.IsDeprecated)
+                    </label>
+                </div>
+            }
+            <br>
+            <div class="col-12 form-group">
+                <button type="submit" class="btn btn-dark like-submit">Сохранить изменения</button>
+
+                @if (User.IsInRole("admin"))
+                {
+                    <a asp-action="Index" class="btn btn-secondary like-submit">Отменить изменения</a>
+                }
+                else
+                {
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary like-submit">Отменить изменения</a>
+                }
+
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

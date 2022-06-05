@@ -1,0 +1,93 @@
+﻿@model OrderAdditionalInfoViewModel
+@{
+    ViewData["Title"] = "Редактирование данных о наряд-заказе";
+}
+
+<div class="col-12 blur-background p-4">
+    <form method="post" asp-controller="Order" asp-action="AdditionalInfo" asp-antiforgery="true">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <label asp-for="@Model.OrderAdditionalInfoHelperViewModel.Id" class="control-label"></label>
+            <input asp-for="@Model.OrderAdditionalInfoHelperViewModel.Id" readonly="readonly" class="form-control" autocomplete="off" />
+        </div>
+
+        <div class="form-group">
+            *<label asp-for="@Model.OrderAdditionalInfoHelperViewModel.StatusOrderListId"></label><br />
+            <select asp-for="@Model.OrderAdditionalInfoHelperViewModel.StatusOrderListId" asp-items="@Model.StatusOrderList" class="form-control" autocomplete="off">
+            </select>
+            <span asp-validation-for="@Model.OrderAdditionalInfoHelperViewModel.StatusOrderListId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.ThingTypeValue" class="control-label"></label>
+            <input asp-for="@Model.ThingTypeValue" readonly="readonly" class="form-control" autocomplete="off" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.AdditionalCostValue" class="control-label"></label>
+            <input asp-for="@Model.AdditionalCostValue" readonly="readonly" class="form-control" autocomplete="off" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.DiscountValue" class="control-label"></label>
+            <input asp-for="@Model.DiscountValue" readonly="readonly" class="form-control" autocomplete="off" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.StockValue" class="control-label"></label>
+            <input asp-for="@Model.StockValue" readonly="readonly" class="form-control" autocomplete="off" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.OrderAdditionalInfoHelperViewModel.FinalPriceValue" class="control-label"></label>
+            <input asp-for="@Model.OrderAdditionalInfoHelperViewModel.FinalPriceValue" readonly="readonly" class="form-control" autocomplete="off" />
+        </div>
+
+        <div class="form-group">
+            *<label asp-for="@Model.OrderAdditionalInfoHelperViewModel.StatusPayListId"></label><br />
+            <select asp-for="@Model.OrderAdditionalInfoHelperViewModel.StatusPayListId" asp-items="@Model.StatusPayList" class="form-control" autocomplete="off">
+            </select>
+            <span asp-validation-for="@Model.OrderAdditionalInfoHelperViewModel.StatusPayListId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.OrderAdditionalInfoHelperViewModel.DateOfAffectedPlainIssue" class="control-label"></label>
+            <input asp-for="@Model.OrderAdditionalInfoHelperViewModel.DateOfAffectedPlainIssue" type="date" asp-format="{0:yyyy-MM-dd}" class="form-control" autocomplete="off" />
+            <span asp-validation-for="@Model.OrderAdditionalInfoHelperViewModel.DateOfAffectedPlainIssue" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="@Model.OrderAdditionalInfoHelperViewModel.DateOfIssue" class="control-label"></label>
+            <input asp-for="@Model.OrderAdditionalInfoHelperViewModel.DateOfIssue" type="date" asp-format="{0:yyyy-MM-dd}" class="form-control" autocomplete="off" />
+            <span asp-validation-for="@Model.OrderAdditionalInfoHelperViewModel.DateOfIssue" class="text-danger"></span>
+        </div>
+
+        <br><h5>Текущие заметки к наряд-заказу</h5><br>
+
+        @for (int i = 0; i < Model.OrderAdditionalInfoList.Count; ++i)
+        {
+            <div class="form-group">
+                <label asp-for="@Model.OrderAdditionalInfoList[i].Employee.UserName" class="control-label">
+                    Заметка от "@Model.OrderAdditionalInfoList[i].Employee.FamilyName @Model.OrderAdditionalInfoList[i].Employee.Name" | "@Model.OrderAdditionalInfoList[i].Employee.UserName"
+                </label>
+                <input asp-for="@Model.OrderAdditionalInfoList[i].Data" readonly="readonly" class="form-control" />
+            </div>
+        }
+
+        <br><h5>Оставить заметку к наряд-заказу</h5><br>
+
+        <div class="form-group">
+            <label asp-for="@Model.OrderAdditionalInfoHelperViewModel.OrderAdditionalInfo" class="control-label"></label>
+            <input asp-for="@Model.OrderAdditionalInfoHelperViewModel.OrderAdditionalInfo" class="form-control" autocomplete="off" />
+        </div>
+
+        <input type="submit" value="Сохранить изменения" class="btn btn-dark">
+        <input asp-action="Index" type="submit" value="Отменить изменения" class="btn btn-secondary">
+
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

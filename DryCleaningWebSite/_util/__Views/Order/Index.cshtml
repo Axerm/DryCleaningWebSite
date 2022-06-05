@@ -1,0 +1,122 @@
+﻿@model PaginatedList<Order>
+@{
+    ViewData["Title"] = "Зарегистрированные наряд-заказы";
+}
+
+<form asp-action="Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            <label>Поиск:</label> <input type="text" autocomplete="off" name="SearchString" value="@ViewData["SortOrdersFilter"]" />
+            <input type="submit" value="Найти" class="btn btn-outline-light" /> |
+            <a asp-action="Index">Вернуться к полному списку</a>
+        </p>
+    </div>
+</form>
+
+<table class="table table-dark table-striped table-hover">
+    <thead>
+        <tr>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["SortOrdersId"]" asp-route-currentFilter="@ViewData["SortOrdersFilter"]">№</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["SortOrdersFilial"]" asp-route-currentFilter="@ViewData["SortOrdersFilter"]">Филиал</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["SortOrdersDateOfReceipt"]" asp-route-currentFilter="@ViewData["SortOrdersFilter"]">Дата приёма</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["SortOrdersDateOfPlainIssue"]" asp-route-currentFilter="@ViewData["SortOrdersFilter"]">Дата выдачи</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["SortOrdersDateOfAffectedPlainIssue"]" asp-route-currentFilter="@ViewData["SortOrdersFilter"]">Выдача перенесена</a>
+            </th>
+            <th>
+                <a asp-action="Index" asp-route-sortOrder="@ViewData["SortOrdersStatusOrder"]" asp-route-currentFilter="@ViewData["SortOrdersFilter"]">Статус</a>
+            </th>
+            <th>
+                <a>Действия над заказами</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <label>@item.Id</label>
+                </td>
+                <td>
+                    <label>@item.Filial?.Name</label>
+                </td>
+                <td>
+                    <label>@item.DateOfReceipt.ToString("dd.MM.yyy")</label>
+                </td>
+                <td>
+                    <label>@item.DateOfPlainIssue.ToString("dd.MM.yyy")</label>
+                </td>
+                <td>
+                    <label>@item?.DateOfAffectedPlainIssue?.ToString("dd.MM.yyy")</label>
+                </td>
+                <td>
+                    <label>@item?.StatusOrder.Name</label>
+                </td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.Id">Просмотреть</a> |
+                    <a asp-action="AdditionalInfo" asp-route-id="@item.Id">Редактировать</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@{
+    var firstDisabled = !Model.HasFirst ? "disabled" : "";
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
+    var lastDisabled = !Model.HasLast ? "disabled" : "";
+}
+
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["SortOrderCurrentSort"]"
+   asp-route-pageNumber="1"
+   asp-route-currentFilter="@ViewData["SortOrdersFilter"]"
+   class="btn btn-outline-light @firstDisabled">
+   В начало
+</a>
+
+@if (Model.HasFirst)
+{
+    <a asp-action="Index"
+       asp-route-sortOrder="@ViewData["SortOrderCurrentSort"]"
+       asp-route-pageNumber="@(Model.PageIndex - 1)"
+       asp-route-currentFilter="@ViewData["SortOrdersFilter"]"
+       class="btn btn-outline-light @prevDisabled">
+        @(Model.PageIndex - 1)
+    </a>
+}
+
+<a asp-action="Index"
+   class="btn btn-outline-light disabled">
+    @(Model.PageIndex)
+</a>
+
+@if (Model.HasLast)
+{
+    <a asp-action="Index"
+       asp-route-sortOrder="@ViewData["SortOrderCurrentSort"]"
+       asp-route-pageNumber="@(Model.PageIndex + 1)"
+       asp-route-currentFilter="@ViewData["SortOrdersFilter"]"
+       class="btn btn-outline-light @nextDisabled">
+
+        @(Model.PageIndex + 1)
+    </a>
+}
+
+<a asp-action="Index"
+   asp-route-sortOrder="@ViewData["SortOrderCurrentSort"]"
+   asp-route-pageNumber="@Model.TotalPages"
+   asp-route-currentFilter="@ViewData["SortOrdersFilter"]"
+   class="btn btn-outline-light @lastDisabled">
+   В конец
+</a>
